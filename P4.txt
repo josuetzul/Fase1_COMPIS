@@ -1,0 +1,4 @@
+def suma(i a, i c) {
+    return a + c;
+}
+write(suma(5, 10));

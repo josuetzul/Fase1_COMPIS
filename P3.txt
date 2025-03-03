@@ -1,0 +1,6 @@
+i ejemplo3 = 7;
+i valorInput;
+if (ejemplo3 < 10) {  
+    read(valorInput);
+    write(valorInput);
+}

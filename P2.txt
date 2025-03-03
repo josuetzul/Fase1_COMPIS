@@ -1,0 +1,3 @@
+i ejemplo1 = 23;
+
+(ejemplo1 + 3) * 5;
