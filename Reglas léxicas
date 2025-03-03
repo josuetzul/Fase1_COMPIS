@@ -1,0 +1,9 @@
+ID      ::= LETRA (LETRA | DIGITO)*
+STRING  ::= '"' (LETRA | DIGITO | ESPACIO | "_" | "-" )* '"' 
+NUM     ::= DIGITO+
+FLOAT   ::= NUM "." NUM
+DIGITO  ::= [0-9]
+BOOL    ::= "True" | "False"
+DESI    ::= "<" | ">" | "==" | "=" | "!="
+READ    ::= "read"
+WRITE   ::= "write"
