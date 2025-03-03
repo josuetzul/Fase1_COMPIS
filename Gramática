@@ -1,0 +1,61 @@
+// Inicio del programa
+<S> ::= <P> $
+
+// P va a ser cada linea de código, ya que produce todo
+<P> ::= <Declaracion> <P>
+       | <Funcion> <P>
+       | <Control> <P>
+       | <While> <P>
+       | <IN> <P>
+       | <OUT> <P>
+       | <LlamadaFuncion> <P>
+       | <Return> <P>
+       | ε
+
+// 1. Declaraciones (D)
+<Declaracion> ::= <B> id = <V> ; 
+<B> ::= i | f | s | b 
+<V> ::= NUM | FLOAT | STRING | BOOL 
+
+// 2. Expresiones Aritméticas (E)
+<E> ::= <T1> <E'>
+<E'> ::= + <T1> <E'> 
+       | - <T1> <E'> 
+       | ε
+<T1> ::= <F1> <T'>
+<T'> ::= * <F1> <T'> 
+       | / <F1> <T'> 
+       | ε
+<F1> ::= id
+       | STRING
+       | NUM 
+       | FLOAT 
+       | ( <E> ) 
+       | <LlamadaFuncion>
+
+
+// 3. Desigualdades (R)
+<R> ::= <E> DESI <E>  
+
+// 4. Estructuras de Control
+<Control> ::= if ( <R> ) { <P> } <Control'>
+<Control'> ::= else { <P> } 
+	     | ε
+<While> ::= while ( <R> ) { <P> }
+
+// 5. Funciones
+<Funcion> ::= def id ( <Params> ) { <P> }
+<Params> ::= <B> id <ParamList> 
+           | ε
+<ParamList> ::= , <B> id <ParamList> 
+              | ε
+<LlamadaFuncion> ::= id ( <Args> ) ;
+<Args> ::= <E> <ArgList> 
+         | ε
+<ArgList> ::= , <E> <ArgList> 
+            | ε
+<Return> ::= return <E> ;
+
+// 6. Input/Output
+<IN> ::= read ( id ) ;
+<OUT> ::= write ( <E> ) ;
