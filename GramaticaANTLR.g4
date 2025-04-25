@@ -1,7 +1,7 @@
-grammar MiLenguaje;
+grammar Exor;
 
 //Inicio de programa. Start Rule = programa
-programa : sentencia* EOF;
+prog : sentencia* EOF;
 
 sentencia
     : declaracion
