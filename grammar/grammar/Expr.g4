@@ -1,6 +1,6 @@
 ﻿grammar Expr;
 
-//Inicio de programa. Start Rule = programa
+//Inicio del programa. Start Rule = programa
 prog : sentencia* EOF;
 
 sentencia
