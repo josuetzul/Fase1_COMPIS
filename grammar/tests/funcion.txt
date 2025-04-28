@@ -1,0 +1,2 @@
+def sum(i a, i b) { return a + b; }
+write( sum(3,4) );
