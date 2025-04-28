@@ -1,0 +1,2 @@
+# esto provoca fallo léxico
+@invalid;
