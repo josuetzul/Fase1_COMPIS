@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\grammar",
+    "\\grammar\\generated",
+    "\\grammar\\src"
   ],
-  "SelectedNode": "\\C:\\Users\\juego\\Source\\Repos\\Fase1_COMPIS",
+  "SelectedNode": "\\grammar\\src\\main.py",
   "PreviewInSolutionExplorer": false
 }
