@@ -1,2 +1,2 @@
-# esto provoca fallo léxico
+# esto provoca fallo lexico
 @invalid;
