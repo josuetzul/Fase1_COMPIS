@@ -1,1 +1,2 @@
+i vrNoDeclarada
 write(y);
