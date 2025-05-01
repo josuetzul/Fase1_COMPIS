@@ -3,8 +3,10 @@
     "",
     "\\grammar",
     "\\grammar\\generated",
-    "\\grammar\\src"
+    "\\grammar\\grammar",
+    "\\grammar\\src",
+    "\\grammar\\tests"
   ],
-  "SelectedNode": "\\grammar\\src\\main.py",
+  "SelectedNode": "\\grammar\\src\\my_visitor.py",
   "PreviewInSolutionExplorer": false
 }

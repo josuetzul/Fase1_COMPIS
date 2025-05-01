@@ -1,6 +1,6 @@
 ﻿grammar Expr;
 
-//Inicio del programa. Start Rule = programa
+//Inicio de programa. Start Rule = programa
 prog : sentencia* EOF;
 
 sentencia
@@ -35,7 +35,7 @@ expresion2 ::= + termino1 expresion2
        | ε
 */
 
-termino1  : factor1 (('' | '/') factor1) ;
+termino1  : factor1 (('*' | '/') factor1)* ;
 
 /*
 termino1 ::= factor1 termino2
