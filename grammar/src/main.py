@@ -21,6 +21,10 @@ def parse_and_visit(file_path):
     print(tree.toStringTree(recog=parser))
     visitor = MyVisitor()
     visitor.visit(tree)
+    
+    print("\n#Codigo Python resultante")
+    for line in visitor.python_lines:
+        print(line)
 
 if __name__ == "__main__":
     tests_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tests'))
