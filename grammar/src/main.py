@@ -2,7 +2,7 @@
 
 import os, sys
 
-project_root = os.path.abspath(os.path.join(os.path.dirname(_file_), '..'))
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
@@ -14,8 +14,8 @@ from generated.ExprParser import ExprParser
 from src.my_visitor       import MyVisitor
 
 class SyntaxErrorListener(ErrorListener):
-    def _init_(self):
-        super()._init_()
+    def __init__(self):
+        super().__init__()
         self.has_error = False
 
     def syntaxError(self, recognizer, offendingSymbol, line, col, msg, e):
@@ -41,8 +41,8 @@ def parse_and_visit(file_path):
     for line in visitor.python_lines:
         print(line)
 
-if _name_ == "_main_":
-    tests_dir = os.path.abspath(os.path.join(os.path.dirname(_file_), '..', 'tests'))
+if __name__ == "__main__":
+    tests_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tests'))
 
     if len(sys.argv) == 2:
         chosen = sys.argv[1]
