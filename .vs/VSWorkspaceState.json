@@ -2,11 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\grammar",
-    "\\grammar\\generated",
-    "\\grammar\\grammar",
     "\\grammar\\src",
     "\\grammar\\tests"
   ],
-  "SelectedNode": "\\grammar\\src\\main.py",
+  "SelectedNode": "\\grammar\\src\\my_visitor.py",
   "PreviewInSolutionExplorer": false
 }

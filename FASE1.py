@@ -3,7 +3,7 @@ import re
 def load_file(file_path):
     """
     Lee un archivo de texto y devuelve su contenido como una única cadena.
-    Se eliminan los espacios en blanco al inicio y final de cada línea antes de concatenarlas.
+    Se eliminan los espacios en blanco al inicio y final de cada linea antes de concatenarlas.
     
     :param file_path: Ruta del archivo a leer.
     :return: Contenido del archivo como una sola cadena de texto.
@@ -28,9 +28,9 @@ TOKEN_REGEX = {
     'TYPE': re.compile(r'\bi\b|\bf\b|\bs\b|\bb\b'),  # Tipos de datos (i: entero, f: float, s: string, b: booleano)
     'ID': re.compile(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b'),  # Identificadores (variables, nombres de funciones)
     'EQUAL': re.compile(r'='),              # Signo de asignación '='
-    'OP': re.compile(r'[+\-*/]'),          # Operadores aritméticos '+', '-', '*', '/'
-    'LPAREN': re.compile(r'\('),           # Paréntesis izquierdo '('
-    'RPAREN': re.compile(r'\)'),           # Paréntesis derecho ')'
+    'OP': re.compile(r'[+\-*/]'),          # Operadores aritmeticos '+', '-', '*', '/'
+    'LPAREN': re.compile(r'\('),           # Parentesis izquierdo '('
+    'RPAREN': re.compile(r'\)'),           # Parentesis derecho ')'
     'LBRACE': re.compile(r'\{'),           # Llave izquierda '{'
     'RBRACE': re.compile(r'\}'),           # Llave derecha '}'
     'COMMA': re.compile(r','),              # Coma ','
@@ -39,7 +39,7 @@ TOKEN_REGEX = {
 
 def lexer(input_text):
     """
-    Analizador léxico (lexer) que toma un código fuente como entrada y lo convierte en una lista de tokens.
+    Analizador lexico (lexer) que toma un código fuente como entrada y lo convierte en una lista de tokens.
     
     :param input_text: Código fuente a analizar.
     :return: Lista de tokens representados como tuplas (tipo de token, valor).
@@ -58,9 +58,9 @@ def lexer(input_text):
                 matched = True
                 break
         
-        # Si no hay coincidencia, lanzar un error léxico
+        # Si no hay coincidencia, lanzar un error lexico
         if not matched:
-            raise SyntaxError(f"Error léxico en: {input_text}")
+            raise SyntaxError(f"Error lexico en: {input_text}")
     
     tokens.append(('EOF', ''))  # Agregar token de fin de archivo
     return tokens

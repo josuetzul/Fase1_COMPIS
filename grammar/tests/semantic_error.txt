@@ -1,2 +1,8 @@
-i vrNoDeclarada
-write(y);
+s palabra = "hola";
+i prueba = 15;
+
+if(prueba == true){
+write(palabra);
+palabra = prueba+palabra;
+write(palabra);
+}

@@ -34,7 +34,7 @@ def parse_and_visit(file_path):
     if listener.has_error:
         return
     print(tree.toStringTree(recog=parser))
-    visitor = MyVisitor()
+    visitor = MyVisitor(listener)
     visitor.visit(tree)
     
     print("\n#Codigo Python resultante")
