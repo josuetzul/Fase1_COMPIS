@@ -37,9 +37,19 @@ def parse_and_visit(file_path):
     visitor = MyVisitor(listener)
     visitor.visit(tree)
     
-    print("\n#Codigo Python resultante")
-    for line in visitor.python_lines:
-        print(line)
+    # Nombre base del archivo de entrada (sin extension)
+    base_name = os.path.splitext(os.path.basename(file_path))[0]
+
+    # Ruta de salida en la raiz del proyecto
+    output_path = os.path.join(project_root, f'{base_name}_output.py')
+
+    # Escribir el codigo Python en el archivo
+    with open(output_path, 'w', encoding='utf-8') as f:
+        for line in visitor.python_lines:
+            f.write(line + '\n')
+
+    # Mostrar ruta en consola
+    print(f"\n Codigo Python generado en: {output_path}")
 
 if __name__ == "__main__":
     tests_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tests'))
