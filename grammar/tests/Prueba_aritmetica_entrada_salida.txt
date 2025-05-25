@@ -1,0 +1,14 @@
+i x;
+i y = 10;
+i n;
+write("Ingrese un numero");
+read(n);
+x = n + 5;
+
+write(x);
+
+if (x<=y){
+	write("El numero ingresado es menor que 10");
+} else {
+	write("El numero ingresado es mayor que 10");
+}

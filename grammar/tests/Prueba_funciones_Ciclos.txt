@@ -1,0 +1,10 @@
+i contador = 3;
+
+def duplicar(i num) {
+    return num * 2;
+}
+
+while (contador > 0) {
+    write(duplicar(contador));
+    contador = contador - 1;
+}

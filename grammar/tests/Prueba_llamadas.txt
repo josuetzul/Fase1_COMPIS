@@ -1,0 +1,4 @@
+def duplicar(i n){
+    return n*2;
+}
+write(duplicar(12));

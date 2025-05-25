@@ -1,0 +1,7 @@
+b palabra = "valido";
+
+if(x != 15){
+	write("No es el numero 15");
+} else{
+	write(palabra);
+}
