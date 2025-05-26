@@ -1,6 +1,5 @@
 # src/my_visitor.py
-
-from re import I
+import re
 import os, sys
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -19,6 +18,12 @@ class MyVisitor(ExprVisitor):
         self.var_types = {}
         self.listener = listener
         
+    def normalize_bool_literals(self, text: str) -> str:
+        """Reemplaza 'true'/'false' (cualquier mayúscula/minúscula) por True/False."""
+        # Primero false → False, luego true → True
+        text = re.sub(r'\bfalse\b', 'False', text, flags=re.IGNORECASE)
+        return re.sub(r'\btrue\b', 'True', text, flags=re.IGNORECASE)
+
     def emit(self, line: str):
         """Agregar una linea con la identacion actual."""
         indent = '    ' * self.indent_level
@@ -57,6 +62,10 @@ class MyVisitor(ExprVisitor):
 
         name = ctx.ID().getText()
         self.var_types[name] = typ
+        
+        if typ == 'b' and init_token:
+            raw = init_token.getText().lower()
+            value = 'True' if raw == 'true' else 'False'
 
         # Valor inicial opcional
         if init_token:
@@ -77,7 +86,7 @@ class MyVisitor(ExprVisitor):
     def visitAsignacion(self, ctx: ExprParser.AsignacionContext):
         name = ctx.ID().getText()
         expr_ctx = ctx.expresion()
-        expr_text = expr_ctx.getText()
+        expr_text = self.normalize_bool_literals(expr_ctx.getText())
     
         # Inferir tipo de la expresion
         expr_t = self.infer_type(expr_ctx)
@@ -167,7 +176,7 @@ class MyVisitor(ExprVisitor):
 
     def visitControl(self, ctx: ExprParser.ControlContext):
         print("Visiting: control (if/else)", ctx.getText())
-        cond = ctx.relacional().getText()
+        cond = self.normalize_bool_literals(ctx.relacional().getText())
         self.emit(f"if {cond}:")
         self.indent_level += 1
         self.visit(ctx.bloque(0))
@@ -245,6 +254,6 @@ class MyVisitor(ExprVisitor):
     def visitOutput(self, ctx: ExprParser.OutputContext):
         print("Visiting: output", ctx.getText())
         self.visit(ctx.expresion())
-        expr = ctx.expresion().getText()
+        expr = self.normalize_bool_literals(ctx.expresion().getText())
         self.emit(f"print({expr})")
         return None
