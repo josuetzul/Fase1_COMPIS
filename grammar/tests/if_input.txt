@@ -1,8 +1,8 @@
 i x;
 read(x);
-si ( x > 0 ) {
+if ( x > 0 ) {
 write(x); 
 }
-contrariamente { 
+else { 
 write(0-1*x); 
 }
