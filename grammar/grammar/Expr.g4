@@ -36,21 +36,7 @@ tipo : TYPE_INT | TYPE_FLOAT | TYPE_STRING | TYPE_BOOL ;
 
 expresion : termino1 (('+' | '-') termino1)* ;
 
-/*
-expresion ::= termino1 expresion2
-expresion2 ::= + termino1 expresion2
-       | - termino1 expresion2 
-       | ε
-*/
-
 termino1  : factor1 (('*' | '/') factor1)* ;
-
-/*
-termino1 ::= factor1 termino2
-termino1 ::= * factor1 termino2 
-       | / factor1 termino2 
-       | ε
-*/
 
 factor1
     : BOOL
@@ -64,40 +50,16 @@ factor1
 
 relacional : expresion DESI expresion ;
 
-control : IF '(' relacional ')' '{' bloque '}' ('else' '{' bloque '}')? ;
-
-/*
-Control fue simplificado
-<Control> ::= if ( <R> ) { <P> } <Control'>
-<Control'> ::= else { <P> } 
-	     | ε
-*/
+control : IF '(' relacional ')' '{' bloque '}' (ELSE '{' bloque '}')? ;
 
 whileLoop : WHILE '(' relacional ')' '{' bloque '}' ;
 
 funcion : DEF ID '(' parametros ')' '{' bloque '}' ;
 parametros : (tipo ID) (',' tipo ID)* ;
 
-/*
-<Params> ::= <B> id <ParamList> 
-           | ε
-<ParamList> ::= , <B> id <ParamList> 
-              | ε
-*/
-
 llamadaFuncion : llamadaFuncionSinPuntoYComa ';' ;
 llamadaFuncionSinPuntoYComa : ID '(' (argumentos)? ')' ;
 argumentos : expresion (',' expresion)* ;
-
-/*
-SinPuntoYComa es útil para llamar funcion dentro del read y write
-
-<LlamadaFuncion> ::= id ( <Args> ) ;
-<Args> ::= <E> <ArgList> 
-         | ε
-<ArgList> ::= , <E> <ArgList> 
-            | ε
-*/
 
 retorno : RETURN expresion ';' ;
 input : READ '(' ID ')' ';' ;
