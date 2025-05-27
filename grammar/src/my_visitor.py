@@ -218,13 +218,21 @@ class MyVisitor(ExprVisitor):
     def visitLlamadaFuncion(self, ctx: ExprParser.LlamadaFuncionContext):
         print("Visiting: llamadaFuncion", ctx.getText())
         name = ctx.ID().getText()
-        args = [e.getText() for e in ctx.argumentos().expresion()] if ctx.argumentos() else []
+        if ctx.argumentos():
+            args = [ self.normalize_bool_literals(e.getText()) 
+                     for e in ctx.argumentos().expresion() ]
+        else:
+            args = []
         self.emit(f"{name}({', '.join(args)})")
-        return self.visitChildren(ctx)
+        return None
 
     def visitLlamadaFuncionSinPuntoYComa(self, ctx: ExprParser.LlamadaFuncionSinPuntoYComaContext):
         print("Visiting: llamadaFuncionSinPuntoYComa", ctx.getText())
-        return self.visitChildren(ctx)
+        name = ctx.ID().getText()
+        args = [ self.normalize_bool_literals(e.getText())
+                 for e in ctx.argumentos().expresion() ] if ctx.argumentos() else []
+        self.emit(f"{name}({', '.join(args)})")
+        return None
 
     def visitArgumentos(self, ctx: ExprParser.ArgumentosContext):
         print("Visiting: argumentos", ctx.getText())

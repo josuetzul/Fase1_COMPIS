@@ -1,0 +1,8 @@
+s usuario = "Joaquin";
+
+def Saludar(s nombre){
+    write("Hola");
+    write(nombre);
+}
+
+Saludar(usuario);
